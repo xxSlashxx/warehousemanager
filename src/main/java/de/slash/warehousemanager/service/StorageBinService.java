@@ -17,4 +17,9 @@ public class StorageBinService
     {
         return storageBinRepository.findAll();
     }
+
+    public StorageBin createStorageBin(StorageBin storageBin)
+    {
+        return storageBinRepository.saveAndFlush(storageBin);
+    }
 }

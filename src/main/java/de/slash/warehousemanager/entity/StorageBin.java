@@ -1,5 +1,7 @@
 package de.slash.warehousemanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,6 +17,7 @@ public class StorageBin extends AbstractPersistable
 
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_ID", referencedColumnName = "ID")
+    @JsonBackReference
     private Warehouse warehouse;
 
     public Long getRow()

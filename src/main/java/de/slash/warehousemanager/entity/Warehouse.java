@@ -1,8 +1,10 @@
 package de.slash.warehousemanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Warehouse extends AbstractPersistable
@@ -10,7 +12,8 @@ public class Warehouse extends AbstractPersistable
     private String name;
 
     @OneToMany(mappedBy = "warehouse")
-    private List<StorageBin> storageBins;
+    @JsonManagedReference
+    private Set<StorageBin> storageBins;
 
     public String getName()
     {
@@ -22,12 +25,12 @@ public class Warehouse extends AbstractPersistable
         this.name = name;
     }
 
-    public List<StorageBin> getStorageBins()
+    public Set<StorageBin> getStorageBins()
     {
         return storageBins;
     }
 
-    public void setStorageBins(List<StorageBin> storageBins)
+    public void setStorageBins(Set<StorageBin> storageBins)
     {
         this.storageBins = storageBins;
     }

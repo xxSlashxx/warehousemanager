@@ -1,6 +1,8 @@
 package de.slash.warehousemanager;
 
+import de.slash.warehousemanager.entity.StorageBin;
 import de.slash.warehousemanager.entity.Warehouse;
+import de.slash.warehousemanager.service.StorageBinService;
 import de.slash.warehousemanager.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -16,15 +18,21 @@ public class TestData
     @Autowired
     private WarehouseService warehouseService;
 
-    @PostConstruct
-    public void insertTestData() {
-        insertWarehouses();
-    }
+    @Autowired
+    private StorageBinService storageBinService;
 
-    private void insertWarehouses()
+    @PostConstruct
+    public void insertTestData()
     {
         Warehouse warehouse = new Warehouse();
         warehouse.setName("Test");
-        warehouseService.createWarehouse(warehouse);
+        Warehouse createdWarehouse = warehouseService.createWarehouse(warehouse);
+
+        StorageBin storageBin = new StorageBin();
+        storageBin.setRow(1L);
+        storageBin.setStack(1L);
+        storageBin.setLevel(1L);
+        storageBin.setWarehouse(createdWarehouse);
+        storageBinService.createStorageBin(storageBin);
     }
 }
