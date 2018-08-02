@@ -15,6 +15,8 @@ public class StorageBin extends AbstractPersistable
 
     private Long level;
 
+    private boolean locked;
+
     @ManyToOne
     @JoinColumn(name = "WAREHOUSE_ID", referencedColumnName = "ID")
     @JsonBackReference
@@ -48,6 +50,16 @@ public class StorageBin extends AbstractPersistable
     public void setLevel(Long level)
     {
         this.level = level;
+    }
+
+    public boolean isLocked()
+    {
+        return locked;
+    }
+
+    public void setLocked(boolean locked)
+    {
+        this.locked = locked;
     }
 
     public Warehouse getWarehouse()

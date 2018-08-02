@@ -29,4 +29,10 @@ public class StorageBinController
     {
         return storageBinService.createStorageBin(storageBin);
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/lockUnlock")
+    public void lockUnlockStorageBin(@RequestBody StorageBin storageBin, boolean isLockRequest)
+    {
+        storageBinService.lockUnlockStorageBin(storageBin, isLockRequest);
+    }
 }

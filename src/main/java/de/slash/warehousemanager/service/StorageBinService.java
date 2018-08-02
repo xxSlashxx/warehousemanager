@@ -22,4 +22,18 @@ public class StorageBinService
     {
         return storageBinRepository.saveAndFlush(storageBin);
     }
+
+    public void lockUnlockStorageBin(StorageBin storageBin, boolean isLockRequest)
+    {
+        if(isLockRequest && !storageBin.isLocked())
+        {
+            storageBin.setLocked(true);
+        }
+        else if(!isLockRequest && storageBin.isLocked())
+        {
+            storageBin.setLocked(false);
+        }
+
+        storageBinRepository.saveAndFlush(storageBin);
+    }
 }
