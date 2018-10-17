@@ -1,7 +1,6 @@
 package de.slash.warehousemanager.controller;
 
 import de.slash.warehousemanager.entity.StorageBin;
-import de.slash.warehousemanager.entity.Warehouse;
 import de.slash.warehousemanager.service.StorageBinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
